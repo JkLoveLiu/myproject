@@ -3,7 +3,9 @@
     <div class="windowContent">
       <!--  按钮  -->
       <div style="margin-top: 9px">
-        <el-button type="primary" icon="el-icon-circle-plus-outline"
+        <el-button type="primary"
+                   icon="el-icon-circle-plus-outline"
+                   :disabled="clientInsertBtnDisabled"
                    @click="clientDialogFormVisible = true;clientInsertBtn()">增加
         </el-button>
         <!--  选择框  -->
@@ -410,6 +412,8 @@ export default {
       clientTotalPage: 56,
       // 每一页数目
       clientPageSize: 7,
+      // 增加按钮是否禁用
+      clientInsertBtnDisabled:true,
       // 添加的对话框
       clientDialogTableVisible: false,
       clientDialogFormVisible: false,
@@ -724,6 +728,16 @@ export default {
   },
   created() {
     this.clientGetUserData()
+    axios
+      .get('./php/select/select_power.php')
+      .then((res) => {
+        if (res.data === 2){
+          this.clientInsertBtnDisabled = false
+        }
+      })
+      .catch(function (error) { // 请求失败处理
+        console.log(error);
+      });
   }
 }
 </script>
