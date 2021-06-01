@@ -23,6 +23,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 一个小实训作业
-
+（实际上Vue并不太会，只用了组件，未用路由，）
 
 
