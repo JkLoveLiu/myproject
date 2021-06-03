@@ -732,7 +732,7 @@ export default {
       .get('./php/select/select_power.php')
       .then((res) => {
         if (res.data === 2){
-          this.clientInsertBtnDisabled = false
+          this.clientInsertBtnDisabled = true
         }
       })
       .catch(function (error) { // 请求失败处理
