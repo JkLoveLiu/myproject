@@ -103,8 +103,11 @@
           width="130">
           <template slot-scope="scope">
             <el-button @click="clientSelectClick(scope.row)" type="text" size="small">查看</el-button>
-            <el-button type="text" size="small" @click="clientEditInfo(scope.row)">编辑</el-button>
-            <el-button type="text" size="small" @click="clientDeleteInfo(scope.row)" style="color: red!important;">删除
+            <el-button type="text" size="small" @click="clientEditInfo(scope.row)"
+                       :disabled="clientInsertBtnDisabled">编辑
+            </el-button>
+            <el-button type="text" size="small" @click="clientDeleteInfo(scope.row)" style="color: red;"
+                       :disabled="clientInsertBtnDisabled">删除
             </el-button>
           </template>
         </el-table-column>
@@ -413,7 +416,7 @@ export default {
       // 每一页数目
       clientPageSize: 7,
       // 增加按钮是否禁用
-      clientInsertBtnDisabled:true,
+      clientInsertBtnDisabled: false,
       // 添加的对话框
       clientDialogTableVisible: false,
       clientDialogFormVisible: false,
@@ -731,7 +734,7 @@ export default {
     axios
       .get('./php/select/select_power.php')
       .then((res) => {
-        if (res.data === 2){
+        if (res.data === 2) {
           this.clientInsertBtnDisabled = true
         }
       })
