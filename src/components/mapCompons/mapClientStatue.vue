@@ -39,10 +39,8 @@ export default {
       if ( myChart != null && myChart !== "" && myChart !== undefined ) {
         myChart.dispose();
       }
-
       // 基于准备好的dom，初始化echarts实例
       myChart = echarts.init(this.$refs.main,this.theme);
-
       // 指定图表的配置项和数据
       let option = {
         title: {
@@ -79,8 +77,6 @@ export default {
           }
         ]
       };
-
-
       // 使用刚指定的配置项和数据显示图表。
       option && myChart.setOption(option)
     }

@@ -308,6 +308,8 @@ export default {
             this.manageGetUserData()
             this.$message.success('删除成功');
             this.manageCurrentPage = 1;
+          }else if(res.data === 99){
+            this.$message.error('操作失败，不能操作admin账号');
           } else {
             this.$message.error('删除失败，不能操作当前账号');
           }
@@ -343,6 +345,8 @@ export default {
       }).then((res) => {
         if (res.data === 1) {
           this.$message.warning('不能操作当前账号');
+        }else if(res.data === 99){
+          this.$message.error('操作失败，不能操作admin账号');
         } else {
           this.manageGetUserData();
           this.$message.success('编辑用户数据成功');

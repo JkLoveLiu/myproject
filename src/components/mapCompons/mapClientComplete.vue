@@ -17,18 +17,19 @@
 <script>
 import * as echarts from 'echarts';
 import axios from "axios";
+
 let myChart;
 export default {
   name: "mapClientComplete",
-  data(){
+  data() {
     return {
-      addressValue:[],
-      isTheme:false,
-      theme:'',
+      addressValue: [],
+      isTheme: false,
+      theme: '',
     }
   },
-  methods:{
-    mapDark(sw){
+  methods: {
+    mapDark(sw) {
       console.log(sw)
       this.isTheme = sw;
       this.isTheme ? this.theme = 'dark' : this.theme = ''
@@ -36,13 +37,11 @@ export default {
     },
     createCountMap() {
       // 销毁
-      if ( myChart != null && myChart !== "" && myChart !== undefined ) {
+      if (myChart != null && myChart !== "" && myChart !== undefined) {
         myChart.dispose();
       }
-
       // 基于准备好的dom，初始化echarts实例
-      myChart = echarts.init(this.$refs.main,this.theme);
-
+      myChart = echarts.init(this.$refs.main, this.theme);
       // 指定图表的配置项和数据
       let option = {
         tooltip: {
@@ -84,14 +83,12 @@ export default {
           }
         ]
       };
-
-
       // 使用刚指定的配置项和数据显示图表。
       option && myChart.setOption(option)
     }
   },
-  watch:{
-    addressValue(){
+  watch: {
+    addressValue() {
       this.createCountMap()
     }
   },
